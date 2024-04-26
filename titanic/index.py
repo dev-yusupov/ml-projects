@@ -5,6 +5,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 
+import pickle
+
 df = pd.read_csv("data.csv")
 
 columns = ['Survived', 'Pclass', 'Sex', 'Age']
@@ -38,6 +40,9 @@ Y_pred_knn = model_knn.predict(X_test)
 
 matrix_lr = confusion_matrix(Y_test, Y_pred_lr)
 matrix_knn = confusion_matrix(Y_test, Y_pred_knn)
+
+with open('log_reg_model.pkl', 'wb') as f:
+    pickle.dump(model_lr, f)
 
 print(matrix_lr)
 print(matrix_knn)
