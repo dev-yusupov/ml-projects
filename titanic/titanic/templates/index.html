@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Enter Passenger Information</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="pclass">Class:</label>
+                <input type="number" name="pclass" id="pclass" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select name="sex" id="sex" class="form-control" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <!-- Display the predicted value -->
+        {% if survived is not None %}
+            <div class="mt-4">
+                <h4>Predicted Outcome:</h4>
+                <p class="font-weight-bold {% if survived %}text-success{% else %}text-danger{% endif %}">
+                    {% if survived %}
+                        Survived
+                    {% else %}
+                        Did not survive
+                    {% endif %}
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
