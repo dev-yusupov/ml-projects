@@ -58,7 +58,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_
 
 # Train models
 model_knn = KNeighborsClassifier(n_neighbors=6)
-model_random_forest = RandomForestClassifier(max_depth=50, n_estimators=191)
+model_random_forest = RandomForestClassifier(max_depth=425, n_estimators=795)
 model_tree = DecisionTreeClassifier(max_depth=30)
 model_logistic = LogisticRegression()
 model_gradient_boosting = GradientBoostingClassifier()
