@@ -7,9 +7,9 @@ df = pd.read_csv("data.csv")
 metadata = SingleTableMetadata()
 metadata.detect_from_dataframe(df)
 
-synthesizer = CTGANSynthesizer(metadata=metadata, epochs=500)
+synthesizer = CTGANSynthesizer(metadata=metadata, epochs=500, verbose=True, cuda=True)
 synthesizer.fit(df)
 
 synthetic_data = synthesizer.sample(num_rows=50000)
 
-synthetic_data.to_csv("synthetic_data.csv")
+synthetic_data.to_csv("synthetic_data_v1.csv")

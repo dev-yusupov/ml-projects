@@ -5,3 +5,4 @@ pd.set_option("display.max_columns", None)
 
 columns = ['battery_power', 'clock_speed', 'dual_sim', 'fc', 'four_g', 'int_memory', 'm_dep', ]
 
+print(dataset)

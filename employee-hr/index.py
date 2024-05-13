@@ -1,4 +1,6 @@
 import pandas as pd
+import pickle as pkl
+
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 
@@ -70,3 +72,7 @@ mse_tree_test = mean_squared_error(Y_test, Y_pred_tree_test)
 
 print("MAE on testing data for GB model:", mae_tree_test)
 print("MSE on testing data for GB model:", mse_tree_test)
+
+
+with open("employee.pkl", 'wb') as file:
+    pkl.dump(model_tree, file=file)
